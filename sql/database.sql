@@ -2,12 +2,12 @@ use finalPHP;
 
 CREATE TABLE usuario(
 	codusu int NOT NULL AUTO_INCREMENT,
-    email varchar(21) NOT NULL,
-    password varchar(21) NOT NULL,
-    nomusu varchar(21) NOT NULL,
-    profesion varchar(60) NOT NULL,
-    foto varchar(255) NOT NULL,
-    PRIMARY KEY (P_Id)
+  email varchar(21) NOT NULL,
+  password varchar(21) NOT NULL,
+  nomusu varchar(21) NOT NULL,
+  profesion varchar(60) NOT NULL,
+  foto varchar(255) NOT NULL,
+  PRIMARY KEY (codusu)
 );
 
 CREATE TABLE amistades(
