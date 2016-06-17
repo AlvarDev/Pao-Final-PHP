@@ -81,7 +81,10 @@ DELIMITER //
 CREATE PROCEDURE sp_get_list_friends(
 	IN codusuIn int)
 BEGIN
-  SELECT codusu, nomusu, foto from amistades where codusu=codusuIn;
+  SELECT u.codusu, u.nomusu, u.foto 
+  from amistades a
+  INNER JOIN usuario u ON a.codusu = u.codusu 
+  where codusu=codusuIn;
 END //
 DELIMITER ;
 
@@ -120,18 +123,18 @@ BEGIN
   FROM amistades
   where codusu=codamiIn and codami=codamiIn;
 
-  IF exist1 ==  1
+  IF exist1 =  1 THEN
   UPDATE amistades
   SET estado = estadoIn
   where codusu = codusuIn and codami=codamiIn;
-  ELSE IF exist2 ==  1
+  ELSE IF exist2 =  1 THEN
   UPDATE amistades
   SET estado = estadoIn
   where codusu = codamiIn and codami=codusuIn;
   ELSE
   INSERT INTO amistades (codusu, codami, estado)
   values(codusuIn, codamiIn, estadoIn);
-  END IF
+  END IF;
 
 END //
 DELIMITER ;
