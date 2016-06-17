@@ -67,7 +67,7 @@ BEGIN
   SELECT nomusu, profesion, foto from usuario where codusu=codusuIn;
   ELSE
   SELECT nomusu, profesion, foto, 
-  (select estado from amistades where (codusu=codusuIn and codami=codamiIn) or (codusu=codami and codami=codamiIn)) as estado
+  (select estado from amistades where codusu=codusuIn and codami=codamiIn) as estado
   from usuario where codusu=codusuIn;
   END IF;
 END //
