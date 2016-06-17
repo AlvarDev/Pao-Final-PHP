@@ -19,7 +19,7 @@ CREATE TABLE amistades(
 );
 
 -- REGISTRAR NUEVO USUARIO
-DELIMITER 
+DELIMITER //
 CREATE PROCEDURE sp_register_new_user(
 	IN emailIn varchar(21),
 	IN passwordIn varchar(21),
