@@ -15,7 +15,8 @@ CREATE TABLE amistades(
      codami int NOT NULL,
      estado int NOT NULL,
 	PRIMARY KEY (codusu, codami),
-	FOREIGN KEY (estado) REFERENCES usuario(codusu)
+	FOREIGN KEY (codusu) REFERENCES usuario(codusu),
+  FOREIGN KEY (codami) REFERENCES usuario(codusu)
 );
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- (0) REGISTRAR NUEVO USUARIO
@@ -83,8 +84,8 @@ CREATE PROCEDURE sp_get_list_friends(
 BEGIN
   SELECT u.codusu, u.nomusu, u.foto 
   from amistades a
-  INNER JOIN usuario u ON a.codusu = u.codusu 
-  where codusu=codusuIn;
+  INNER JOIN usuario u ON a.codami = u.codusu 
+  where a.codusu=codusuIn;
 END //
 DELIMITER ;
 
@@ -97,11 +98,11 @@ DELIMITER //
 CREATE PROCEDURE sp_search_users(
   IN nomusuIn varchar(21))
 BEGIN
-  SELECT codusu, nomusu, foto from usuario where nomusu like '%'+nomusuIn+'%';
+  SELECT codusu, nomusu, foto from usuario where nomusu like nomusuIn;
 END //
 DELIMITER ;
 
-CALL sp_search_users('Pao');
+CALL sp_search_users('%ao%');
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- (5) ADMINISTRAR AMISTAD
@@ -110,57 +111,28 @@ DELIMITER //
 CREATE PROCEDURE sp_manage_friendship(
   IN codusuIn int,
   IN codamiIn int,
-  IN estadoIn int)
+  IN estadoIn int,
+  IN action int)
 
 BEGIN
-  DECLARE exist1 int;
-  DECLARE exist2 int;
-  SELECT estado INTO exist1
-  FROM amistades
-  where codusu=codusuIn and codami=codamiIn;
-
-  SELECT estado INTO exist2
-  FROM amistades
-  where codusu=codamiIn and codami=codamiIn;
-
-  IF exist1 =  1 THEN
+  
+  IF action = 0 THEN -- AGREGAR
+  INSERT INTO amistades (codusu, codami, estado)
+  values(codusuIn, codamiIn, estadoIn);
+  INSERT INTO amistades (codusu, codami, estado)
+  values(codamiIn, codusuIn, estadoIn);
+  
+  ELSE -- ACTUALIZAR
   UPDATE amistades
   SET estado = estadoIn
   where codusu = codusuIn and codami=codamiIn;
-  ELSE IF exist2 =  1 THEN
   UPDATE amistades
   SET estado = estadoIn
   where codusu = codamiIn and codami=codusuIn;
-  ELSE
-  INSERT INTO amistades (codusu, codami, estado)
-  values(codusuIn, codamiIn, estadoIn);
   END IF;
-
 END //
 DELIMITER ;
 
-CALL sp_manage_friendship(1, 2 , 3);
-CALL sp_manage_friendship(1, 2 , 2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CALL sp_manage_friendship(1, 2 , 3, 0);
+CALL sp_manage_friendship(1, 2 , 2, 1);
 
