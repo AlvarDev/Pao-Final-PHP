@@ -31,7 +31,7 @@ BEGIN
   INSERT INTO usuario(email, password, nomusu, profesion, foto) 
   values(emailIn, passwordIn, nomusuIn, profesionIn, fotoIn);
 END //
-DELIMITER;
+DELIMITER ;
 
 CALL sp_register_new_user('alvardev@google.com','brasil21','AlvarDev', 'Android Dev', 'https://scontent.fcwb1-1.fna.fbcdn.net/v/t1.0-9/12472824_761620513937453_3396642389945947222_n.jpg?oh=50ade16485988b84cefd506fb36a7c5e&oe=57D1538E');
 CALL sp_register_new_user('pao@google.com', 'peru21', 'Pao', 'Software Dev', 'https://scontent.fcwb1-1.fna.fbcdn.net/t31.0-8/q81/s960x960/13041292_1068079236588381_4231572010446298894_o.jpg');
@@ -45,7 +45,7 @@ CREATE PROCEDURE sp_login(
 BEGIN
   SELECT codusu from usuario where email=emailIn AND password=passwordIn;
 END //
-DELIMITER;
+DELIMITER ;
 
 CALL sp_login('alvardev@google.com','brasil21');
 
@@ -56,7 +56,7 @@ CREATE PROCEDURE sp_get_profile(
 BEGIN
   SELECT nomusu, profesion, foto from usuario where codusu=codusuIn;
 END //
-DELIMITER;
+DELIMITER ;
 
 CALL sp_get_profile(1);
 
@@ -67,7 +67,7 @@ CREATE PROCEDURE sp_search_users(
 BEGIN
   SELECT codusu, nomusu, foto from usuario where nomusu like '%'+nomusuIn+'%';
 END //
-DELIMITER;
+DELIMITER ;
 
 CALL sp_search_users('Pao');
 
@@ -81,7 +81,7 @@ BEGIN
   INSERT INTO amistades (codusu, codami, estado)
   values(codusuIn, codamiIn, estadoIn);
 END //
-DELIMITER;
+DELIMITER ;
 
 CALL sp_manage_friendship(1, 2 , 3);
 CALL sp_manage_friendship(1, 2 , 2);
