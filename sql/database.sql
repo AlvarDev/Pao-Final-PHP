@@ -62,17 +62,17 @@ CREATE PROCEDURE sp_get_profile(
   IN type int)
 BEGIN
 
-  IF type == 0 -- OWENER Profile
+  IF type = 0 THEN -- OWENER Profile
   SELECT nomusu, profesion, foto from usuario where codusu=codusuIn;
   ELSE
-  SELECT nomusu, profesion, foto 
+  SELECT nomusu, profesion, foto, 
   (select estado from amistades where (codusu=codusuIn and codami=codamiIn) or (codusu=codami and codami=codamiIn)) as estado
   from usuario where codusu=codusuIn;
-  END IF
+  END IF;
 END //
 DELIMITER ;
 
-CALL sp_get_profile(1);
+CALL sp_get_profile(1, 0, 0);
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- (3) LISTAR AMIGOS
@@ -81,7 +81,7 @@ DELIMITER //
 CREATE PROCEDURE sp_get_list_friends(
 	IN codusuIn int)
 BEGIN
-  SELECT codusu, nomusu, foto from usuario where codusu=codusuIn;
+  SELECT codusu, nomusu, foto from amistades where codusu=codusuIn;
 END //
 DELIMITER ;
 
