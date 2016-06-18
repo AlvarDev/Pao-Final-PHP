@@ -11,7 +11,7 @@
 
 			switch ($key) {
 				case 'User':
-					$user = new AlumnoController(new Alumno());
+					$user = new UserController(new User());
 					echo $user->loginUser($_POST);
 					break;
 				case 'dota':
