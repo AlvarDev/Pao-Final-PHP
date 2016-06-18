@@ -14,6 +14,9 @@
 					$user = new AlumnoController(new Alumno());
 					echo $user->loginUser($_POST);
 					break;
+				case 'dota':
+					echo "dota";
+					break;
 				default:
 					break;
 			}
