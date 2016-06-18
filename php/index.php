@@ -35,10 +35,10 @@
 					$friendship = new FriendshipController(new Friendship());	
 					switch ($func) {
 						case 'getFrienshipList':
-							echo $user->getFrienshipList($_POST);
+							echo $friendship->getFrienshipList($_POST);
 							break;
 						case 'manageFrienship':
-							echo $user->manageFrienship($_POST);
+							echo $friendship->manageFrienship($_POST);
 							break;
 						
 						default:
