@@ -73,7 +73,7 @@ class User {
             $user->nomusu = $r['nomusu'];   
             $user->profesion = $r['profesion'];
             $user->foto = $r['foto'];
-            $user->estado = int $r['estado'];
+            $user->estado = (int) $r['estado'];
             return $user;
         } 
 

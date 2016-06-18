@@ -23,7 +23,7 @@ class Friendship {
                 $friend->codusu = $r['codusu'];
                 $friend->nomusu = $r['nomusu'];
                 $friend->foto = $r['foto'];
-                $friend->estado = int $r['estado'];
+                $friend->estado = (int) $r['estado'];
                 $this->friends[] = $friend;
             }
 
