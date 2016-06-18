@@ -10,7 +10,7 @@
 			require 'models/'.$key.'.php';
 
 			switch ($key) {
-				case 'user':
+				case 'User':
 					$user = new AlumnoController(new Alumno());
 					echo $user->loginUser($_POST);
 					break;
