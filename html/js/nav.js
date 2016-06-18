@@ -22,9 +22,9 @@ function iniciarSesion () {
 		};
 	$.ajax({
          url:   'http://192.168.0.31/Pao-Final-PHP/php/',
-         type:  'POST',
+         type:  'GET',
          dataType: "jsonp",
-         crossDomain: true,
+         xhrFields:'withCredentials',
          data: dataReq,
          success:  function (response) {
         	 if(response.success){
