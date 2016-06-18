@@ -3,6 +3,7 @@
 	require 'config.php';
 	
 	$key = $_POST['key'];
+	$func = $_POST['func'];
 	if(!empty($key)){
 
 		if(file_exists('controllers/'.$key.'Controller.php') && file_exists('models/'.$key.'.php')){
