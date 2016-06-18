@@ -27,6 +27,9 @@ function iniciarSesion () {
          type:  'POST',
          dataType: "json",
          data: dataReq,
+         headers: {
+   'Access-Control-Allow-Origin' : '*',
+   },
          success:  function (response) {
         	 if(response.success){
         	 	codusuGlobal = response.information.codusu;
