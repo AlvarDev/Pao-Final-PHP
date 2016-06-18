@@ -47,7 +47,7 @@ class Friendship {
         $response = mysqli_query($conexion,$sql);
         mysqli_close($conexion);
 
-        if(mysqli_num_rows($response)>0){
+        if($response){
             return true;
         } 
 
