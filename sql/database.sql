@@ -82,7 +82,7 @@ DELIMITER //
 CREATE PROCEDURE sp_get_list_friends(
 	IN codusuIn int)
 BEGIN
-  SELECT u.codusu, u.nomusu, u.foto, a.estado
+  SELECT u.codusu, u.nomusu, u.foto, a.estado 
   from amistades a
   INNER JOIN usuario u ON a.codami = u.codusu 
   where a.codusu=codusuIn;
