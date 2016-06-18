@@ -1,7 +1,7 @@
 <?php
  class ConexionDB{
 
- 	const SERVER = '192.168.0.22';
+ 	const SERVER = 'localhost';
  
 	const USER = 'root';
  	const PASS = 'root';//'pelio1';
