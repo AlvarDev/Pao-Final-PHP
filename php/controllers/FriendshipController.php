@@ -1,6 +1,6 @@
 <?php 
 
-class UserController {
+class FriendshipController {
 
 	protected $friendship = null;
 
