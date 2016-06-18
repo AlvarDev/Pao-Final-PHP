@@ -1,5 +1,6 @@
 
 var codusuGlobal = 0;
+var url='http://192.168.0.31/Pao-Final-PHP/php/';
 $( document ).ready(function() {
     setlayout();
 });
@@ -20,9 +21,10 @@ function iniciarSesion () {
 			"password"  : $("#password").text()
 		};
 	$.ajax({
-         url:   'http://192.168.0.23/Pao-Final-PHP/php/',
+         url:   'http://192.168.0.31/Pao-Final-PHP/php/',
          type:  'POST',
-         dataType: "json",
+         dataType: "jsonp",
+         crossDomain: true,
          data: dataReq,
          success:  function (response) {
         	 if(response.success){
@@ -30,7 +32,7 @@ function iniciarSesion () {
         		$('#login-register').css("display","none");
 				$('#profile-friends').css("display","inline-block");
 				$('#menu').css("display","inline-block");
-				mostrarAmigos();
+				//mostrarAmigos();
 
         	 }else{
         		 alert("Usuario no encontrado");  
@@ -66,7 +68,7 @@ function mostrarAmigos() {
 			"codusu"  : codusuGlobal
 		};
 	$.ajax({
-         url:   'http://192.168.0.23/Pao-Final-PHP/php/',
+         url:   url,
          type:  'POST',
          dataType: "json",
          data: dataReq,
