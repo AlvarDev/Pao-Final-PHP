@@ -7,20 +7,85 @@
 		<!--<link rel="icon" type="image/png" href="images/ico.png" />-->
 		<link type="text/css" href="css/style.css" rel="stylesheet" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/nav"></script>
+		<script type="text/javascript" src="js/nav.js"></script>
 	</head>
 <body>
 
 <h1>Face con Clase</h1>
 
 <div id="menu">
-	<div class="button" id="mis-amigos">Mis Amigos</div>
-	<div class="button" id="buscar-amigos">Buscar Amigos</div>
+	<div class="button" onclick="showMisAmigos()">Mis Amigos</div>
+	<div class="button" onclick="showBuscar()">Buscar Amigos</div>
 </div>
 <div id="wrapped">
-	<section id="login-register"> </section>
-	<section id="profile-friends"> </section>
-	<section id="profile-search"> </section>
+	<section id="login-register"> 
+		<div class="block">
+			<div>Ingresa a Face</div>
+			<input type="text" id="email" required placeholder="Email">
+			<input type="password" id="password" required placeholder="Passowrd">
+			<div onclick="iniciarSesion()" class="button">Iniciar sesión</div>
+		</div>
+
+
+		<!--<div class="divider"></div>-->
+		<div class="block">
+			<div>Tambien puedes registrarte</div>
+			<input type="text" id="email" required placeholder="Email">
+			<input type="password" id="password" required placeholder="Passowrd">
+			<input type="text" id="nombre" required placeholder="Nombre">
+			<input type="text" id="profesion" required placeholder="Profesión">
+			<input type="text" id="foto" required placeholder="URL Foto">
+			<div onclick="registrarusuario()" class="button">Registrarse</div>
+		</div>
+	</section>
+	<section id="profile-friends">
+		<div class="block2">
+			<h2>Amigos</h2>
+			<div class="amigo-row" onclick="getProfile(1,2,1)">
+				<img class="photo-raw" src="https://scontent.fcwb1-1.fna.fbcdn.net/v/t1.0-9/12472824_761620513937453_3396642389945947222_n.jpg?oh=50ade16485988b84cefd506fb36a7c5e&oe=57D1538E" alt="Smiley face" ><br>
+				<div class="data">Nombre</div><br>
+				<div class="data">Profesion</div>
+			</div>
+
+			
+
+		</div>
+
+		<div class="block">
+			<h2>Perfil</h2>
+			<img class="photo-profile" src="https://scontent.fcwb1-1.fna.fbcdn.net/v/t1.0-9/12472824_761620513937453_3396642389945947222_n.jpg?oh=50ade16485988b84cefd506fb36a7c5e&oe=57D1538E" alt="Smiley face">
+				<div>Nombre</div>
+				<div>Profesion</div>
+				<div>estatus</div>
+				<div class="button" onclick="acceptFriendship(1,2,2,1)">Aceptar amistad</div>
+		</div>
+	</section>
+	<section id="profile-search">
+
+		<input type="text" id="name" required placeholder="Buscar nuevas amistades">
+		<div class="button">Buscar</div>
+
+		<div class="block2">
+			<h2>Resultado</h2>
+			<div class="amigo-row" onclick="getProfile(1,2,1)">
+				<img class="photo-raw" src="https://scontent.fcwb1-1.fna.fbcdn.net/v/t1.0-9/12472824_761620513937453_3396642389945947222_n.jpg?oh=50ade16485988b84cefd506fb36a7c5e&oe=57D1538E" alt="Smiley face" ><br>
+				<div class="data">Nombre</div><br>
+				<div class="data">Profesion</div>
+			</div>
+
+			
+
+		</div>
+
+		<div class="block">
+			<h2>Perfil</h2>
+			<img class="photo-profile" src="https://scontent.fcwb1-1.fna.fbcdn.net/v/t1.0-9/12472824_761620513937453_3396642389945947222_n.jpg?oh=50ade16485988b84cefd506fb36a7c5e&oe=57D1538E" alt="Smiley face">
+				<div>Nombre</div>
+				<div>Profesion</div>
+				<div>estatus</div>
+				<div class="button" onclick="acceptFriendship(1,2,3,0)">Enviar Solicitud de amistad</div>
+		</div>
+	</section>
 </div>
 
 </body>

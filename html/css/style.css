@@ -6,6 +6,8 @@ section{
 	box-shadow: 10px 10px 5px #888888;
 	margin-bottom: 20px;
 	display: inline-block;
+	text-align: center;
+	padding: 30px;
 }
 
 h1{
@@ -19,11 +21,48 @@ h1{
 	background: #819fc3;
 	color: white;
 	margin-bottom: 20px;
-}
-#menu{
-	text-align: center;
+	cursor: pointer;
 }
 
-#wrapped{
+#wrapped, #menu{
 	text-align: center;
+	width: 100%;
+}
+
+.block{
+	width: 20%;
+	display: inline-block;
+}
+
+.block2{
+	width: 50%;
+	display: inline-block;
+}
+.divider{
+	background: #a0a5ab;
+	height: 450px;
+	width: 2px;
+}
+input{
+	width: 80%;
+	margin: 20px;
+	display: inline-block;
+}
+.photo-profile{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+.photo-raw{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.amigo-row{
+	cursor: pointer;
+	display: inline-block;
+}
+.data{
+	display: inline-block;
+	height: 100%;
 }
