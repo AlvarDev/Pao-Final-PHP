@@ -2,8 +2,8 @@
 
 	require 'config.php';
 	
-	$key = $_POST['key'];
-	$func = $_POST['func'];
+	$key = $_GET['key'];
+	$func = $_GET['func'];
 	if(!empty($key)){
 
 		if(file_exists('controllers/'.$key.'Controller.php') && file_exists('models/'.$key.'.php')){
@@ -15,16 +15,16 @@
 					$user = new UserController(new User());
 					switch ($func) {
 						case 'registerUser':
-							echo $user->registerUser($_POST);
+							echo $user->registerUser($_GET);
 							break;
 						case 'loginUser':
-							echo $user->loginUser($_POST);
+							echo $user->loginUser($_GET);
 							break;
 						case 'getUserProfile':
-							echo $user->getUserProfile($_POST);
+							echo $user->getUserProfile($_GET);
 							break;
 						case 'searchUsers':
-							echo $user->searchUsers($_POST);
+							echo $user->searchUsers($_GET);
 							break;
 						default:
 							break;
@@ -35,10 +35,10 @@
 					$friendship = new FriendshipController(new Friendship());	
 					switch ($func) {
 						case 'getFrienshipList':
-							echo $friendship->getFrienshipList($_POST);
+							echo $friendship->getFrienshipList($_GET);
 							break;
 						case 'manageFrienship':
-							echo $friendship->manageFrienship($_POST);
+							echo $friendship->manageFrienship($_GET);
 							break;
 						
 						default:
