@@ -11,9 +11,41 @@ function setlayout () {
 }
 
 function iniciarSesion () {
-	$('#login-register').css("display","none");
-	$('#profile-friends').css("display","inline-block");
-	$('#menu').css("display","inline-block");
+
+
+	var dataReq = {
+			"key"   : "User",
+			"func"  : "loginUser",
+			"email"  : $("#email").text(),
+			"password"  : $("#password").text()
+		};
+	$.ajax({
+         url:   'http://192.168.0.23/Pao-Final-PHP/php/',
+         type:  'POST',
+         dataType: "json",
+         data: dataReq,
+         success:  function (response) {
+        	 if(response.success){
+        	 	codusuGlobal = response.information.codusu;
+        		$('#login-register').css("display","none");
+				$('#profile-friends').css("display","inline-block");
+				$('#menu').css("display","inline-block");
+				mostrarAmigos();
+
+        	 }else{
+        		 alert("Usuario no encontrado");  
+        	 }
+        	 
+         
+         },
+		error: function(response){
+			alert("Erro server");
+		}
+	
+	});
+
+
+	
 }
 
 function registrarusuario () {
@@ -27,6 +59,46 @@ function getProfile (codusu, codami, type) {
 }
 
 function mostrarAmigos() {
+
+	var dataReq = {
+			"key"   : "User",
+			"func"  : "loginUser",
+			"codusu"  : codusuGlobal
+		};
+	$.ajax({
+         url:   'http://192.168.0.23/Pao-Final-PHP/php/',
+         type:  'POST',
+         dataType: "json",
+         data: dataReq,
+         success:  function (response) {
+        	 if(response.success){
+
+        	 	 $( ".amigo-row" ).remove();
+        	 var html="";
+        	 $.each(response.information, function(i, item) {
+
+
+				html='<div class="amigo-row" onclick="getProfile('+codusuGlobal+','+item.codusu+',1)">';
+				html+='<img class="photo-raw" src="'+item.foto+'" alt="Smiley face" ><br>';
+				html+='<div class="data">'+item.nomusu+'</div><br>';
+				html+='</div>';
+        		 
+        		 
+        		 
+        	 });
+        	 $("#lista-amigos").append(html);
+
+        	 }else{
+        		 alert("No se encontraron amigos");  
+        	 }
+        	 
+         
+         },
+		error: function(response){
+			alert("Erro server");
+		}
+	
+	});
 	
 }
 

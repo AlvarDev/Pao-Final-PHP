@@ -19,7 +19,7 @@ class UserController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $user));
+			'information' => $user));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -33,7 +33,7 @@ class UserController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $user));
+			'information' => $user));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ class UserController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $user));
+			'information' => $user));
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +61,7 @@ class UserController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $user));
+			'information' => $user));
 	}
 
 }

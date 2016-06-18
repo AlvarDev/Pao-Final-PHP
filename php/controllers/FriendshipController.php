@@ -19,7 +19,7 @@ class FriendshipController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $friendship));
+			'information' => $friendship));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +33,7 @@ class FriendshipController {
 
 		return json_encode(array(
 			'success' => true, 
-			'info' => $friendship));
+			'information' => $friendship));
 	}
 
 }
