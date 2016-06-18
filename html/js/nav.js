@@ -20,11 +20,12 @@ function iniciarSesion () {
 			"email"  : $("#email").text(),
 			"password"  : $("#password").text()
 		};
+
+
 	$.ajax({
-         url:   'http://192.168.0.31/Pao-Final-PHP/php/',
-         type:  'GET',
-         dataType: "jsonp",
-         xhrFields:'withCredentials',
+         url:   'http://192.168.43.101/Pao-Final-PHP/php/',
+         type:  'POST',
+         dataType: "json",
          data: dataReq,
          success:  function (response) {
         	 if(response.success){
