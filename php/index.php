@@ -12,10 +12,37 @@
 			switch ($key) {
 				case 'User':
 					$user = new UserController(new User());
-					echo $user->loginUser($_POST);
+					switch ($func) {
+						case 'registerUser':
+							echo $user->registerUser($_POST);
+							break;
+						case 'loginUser':
+							echo $user->loginUser($_POST);
+							break;
+						case 'getUserProfile':
+							echo $user->getUserProfile($_POST);
+							break;
+						case 'searchUsers':
+							echo $user->searchUsers($_POST);
+							break;
+						default:
+							break;
+					}
+					
 					break;
-				case 'dota':
-					echo "dota";
+				case 'Friendship':
+					$friendship = new FriendshipController(new Friendship());	
+					switch ($func) {
+						case 'getFrienshipList':
+							echo $user->getFrienshipList($_POST);
+							break;
+						case 'manageFrienship':
+							echo $user->manageFrienship($_POST);
+							break;
+						
+						default:
+							break;
+					}
 					break;
 				default:
 					break;
