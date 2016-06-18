@@ -1,5 +1,5 @@
 <?php
-
+     header('Access-Control-Allow-Origin: *'); 
 	require 'config.php';
 	
 	$key = $_POST['key'];
